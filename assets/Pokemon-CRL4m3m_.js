@@ -1,0 +1,1 @@
+import{d as a,c as s,a as n,b as c,F as r,u,e as l,o as p}from"./index-CFo2bODr.js";const b=a({__name:"Pokemon",setup(m){const o=u(),e=l();console.log("alo",e.params.id);const t=()=>{console.log("goToAbout"),o.push({path:"/about"})};return(_,d)=>(p(),s(r,null,[n(" hello "),c("div",{onClick:t},"button")],64))}});export{b as default};
