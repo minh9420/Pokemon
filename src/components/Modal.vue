@@ -135,6 +135,7 @@ const handleType = (number: number) => {
     margin: auto;
     //padding: 20px;
     border: 1px solid #888;
+    top: 20%;
     width: 30%;
     z-index: 100;
 
