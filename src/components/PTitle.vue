@@ -7,7 +7,7 @@ import type { PokemeonType } from '@/@data/data'
 
 const router = useRouter()
 const handleText = (text: Event) => {
-  const params = text.target?.value
+  const params  = (text.target as HTMLInputElement)?.value
   router.replace({ query: { type: `${params}` } })
 }
 const titleSelect = 'Select pokemon\'s type:'

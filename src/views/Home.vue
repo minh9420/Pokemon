@@ -7,6 +7,10 @@ import PTitle from '@/components/PTitle.vue'
 import { useRoute } from 'vue-router'
 import Modal from '@/components/Modal.vue'
 
+interface Item {
+  [key: string]: any;
+}
+
 const route = useRoute()
 const type = computed(() => route.query.type)
 const sortType = ref<string>()
@@ -27,6 +31,9 @@ const handleSort = (type: string) => {
   sortType.value = sortType.value === type ? undefined : type
 }
 
+const getItemValue = (item: Item, key: string) => {
+  return item && key in item ? item[key] : '';
+}
 
 const data = useQuery({
   queryKey: ['get'], queryFn: () => {
@@ -37,7 +44,6 @@ const data = useQuery({
 const conditionSort = (key: string) => {
   return (key === 'total' || key === 'hp' || key === 'attack' || key === 'defense' || key === 'sp_atk' || key === 'sp_def' || key === 'speed')
 }
-
 
 const getData = computed<Pokemeon[]>(() => data.data.value?.data)
 watch(params, (newValue) => {
@@ -84,7 +90,7 @@ watch(params, (newValue) => {
               </template>
               <template v-else>
                 <span class="text_color">
-                  {{ item && item[key] }}
+                  {{ item && getItemValue(item, key) }}
                 </span>
               </template>
 
